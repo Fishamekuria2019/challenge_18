@@ -51,12 +51,10 @@ import hashlib
 # `amount` attributes
 ## Define a new dataclass called Block
 @dataclass
-class Block:
-    # Define the parameters that the Block class will hold    
-    sender: str
-    sender_id: int
-    receiver_id: int
-    amount: str 
+class Record:
+    sender_id: str
+    receiver_id: str
+    amount: float
 
 
 ################################################################################
@@ -177,11 +175,11 @@ input_data = st.text_input("Block Data")
 
 # @TODO:
 # Add an input area where you can get a value for `sender` from the user.
-sender = st.text_input("Sender ID")
+sender_id = st.text_input("Sender ID")
 
 # @TODO:
 # Add an input area where you can get a value for `receiver` from the user.
-receiver = st.text_input("Receiver ID")
+receiver_id = st.text_input("Receiver ID")
 
 # @TODO:
 # Add an input area where you can get a value for `amount` from the user.
@@ -196,7 +194,7 @@ if st.button("Add Block"):
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
     new_block = Block(
-        data=input_data,
+        record = Record(sender_id, receiver_id, amount),
         creator_id=42,
         prev_hash=prev_block_hash
     )
